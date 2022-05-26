@@ -9,6 +9,10 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+const authRoutes = require("./routes/auth");
+
+app.use("/api/auth/", authRoutes)
+
 app.get("/", (req, res) => {
 	return res.status(200).send("Welcome to TBS-CTF 2022-23.");
 });
