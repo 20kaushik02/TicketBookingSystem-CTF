@@ -4,7 +4,7 @@ const typedefs = require("../typedefs");
 
 const jwt = require("jsonwebtoken");
 
-const Users = require("../models").user;
+const Users = require("../models").User;
 
 /**
  * @param {typedefs.Req} req 
