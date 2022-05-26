@@ -1,6 +1,6 @@
 'use strict';
 
-const typedefs = require('../typedefs');
+const typedefs = require("../typedefs");
 
 module.exports = {
   /**
@@ -10,23 +10,25 @@ module.exports = {
   up(queryInterface, Sequelize) {
     return queryInterface.sequelize.transaction(t => {
       return Promise.all([
-        queryInterface.createTable('Users', {
+        queryInterface.createTable('Screenings', {
           id: {
             allowNull: false,
             autoIncrement: true,
             primaryKey: true,
             type: Sequelize.INTEGER
           },
-          username: {
-            allowNull: false,
-            unique: true,
+          movieID: {
+            type: Sequelize.INTEGER,
+          },
+          screen: {
             type: Sequelize.STRING
           },
-          password: {
-            type: Sequelize.STRING
+          showtime: {
+            type: Sequelize.DATE
           },
-          name: {
-            type: Sequelize.STRING
+          seats: {
+            type: Sequelize.ARRAY(Sequelize.BOOLEAN)
+
           },
           createdAt: {
             allowNull: false,
@@ -38,11 +40,10 @@ module.exports = {
           }
         },
           { transaction: t },
-        ),
+        )
       ]);
     });
   },
-
   /**
    * @param {typedefs.QueryInterface} queryInterface 
    * @param {typedefs.Sequelize} Sequelize 
@@ -52,13 +53,13 @@ module.exports = {
       return Promise.all([
         queryInterface.dropTable(
           'Bookings',
-          { transaction: t },
+          { transaction: t }
         ),
         queryInterface.dropTable(
-          'Users',
-          { transaction: t },
+          'Screenings',
+          { transaction: t }
         ),
-      ])
+      ]);
     });
   }
 };

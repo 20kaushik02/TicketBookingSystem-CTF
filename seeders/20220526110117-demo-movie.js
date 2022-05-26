@@ -11,17 +11,21 @@ module.exports = {
     return queryInterface.sequelize.transaction(t => {
       return Promise.all([
         queryInterface.bulkInsert(
-          'Users',
+          'Movies',
           [
             {
-              username: 'rknarayan02',
-              password: 'hellothere',
-              name: 'Kaushik Narayan R',
+              details: "Don (Sivakarthikeyan)",
               createdAt: new Date(),
-              updatedAt: new Date()
+              updatedAt: new Date(),
+            },
+            {
+              details: "Vikram (Kamal Haasan)",
+              referral: "ARAMBIKALAMA",
+              createdAt: new Date(),
+              updatedAt: new Date(),
             }
           ],
-          { transaction: t }
+          { transaction: t },
         ),
       ]);
     });
@@ -35,7 +39,7 @@ module.exports = {
     return queryInterface.sequelize.transaction(t => {
       return Promise.all([
         queryInterface.bulkDelete(
-          'Users',
+          'Movies',
           null,
           { transaction: t }
         ),

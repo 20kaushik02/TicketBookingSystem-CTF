@@ -10,8 +10,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 const authRoutes = require("./routes/auth");
+const movieRoutes = require("./routes/movie");
 
-app.use("/api/auth/", authRoutes)
+app.use("/api/auth/", authRoutes);
+app.use("/api/movies/", movieRoutes);
 
 app.get("/", (req, res) => {
 	return res.status(200).send("Welcome to TBS-CTF 2022-23.");
