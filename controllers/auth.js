@@ -8,7 +8,7 @@ const saltRounds = 10;
 const tokenUtils = require("../utils/token");
 
 /** @type {typedefs.Model} */
-const Users = require("../models").user;
+const Users = require("../models").User;
 
 /**
  * @param {typedefs.Req} req
@@ -38,7 +38,7 @@ const signUp = async (req, res) => {
 			name
 		})
 
-		const jwtToken = tokenUtils.getJWT(new_user.id);
+		const jwtToken = tokenUtils.getJWT(new_user.username);
 
 		return res.status(201).
 			send({
@@ -73,14 +73,13 @@ const signIn = async (req, res) => {
 				send({ message: "User details not found." });
 		}
 
-		const validated = bcrypt.compare(password, user.password);
-
+		const validated = await bcrypt.compare(password, user.password);
 		if (!validated) {
 			return res.status(401).
 				send({ message: "Incorrect password, try again." });
 		}
 
-		const jwtToken = tokenUtils.getJWT(user.id);
+		const jwtToken = tokenUtils.getJWT(user.username);
 
 		return res.status(200).
 			send({
