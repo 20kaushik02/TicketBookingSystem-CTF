@@ -15,6 +15,7 @@ const getMovieDetails = async (req, res, next) =>	{
 		.withMessage("movieID not defined")
 		.matches(pos_int_regex)
 		.withMessage("movieID should be a positive integer")
+		.toInt()
 		.run(req);
 	
 	next();

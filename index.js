@@ -11,9 +11,11 @@ app.use(express.urlencoded({ extended: true }));
 
 const authRoutes = require("./routes/auth");
 const movieRoutes = require("./routes/movie");
+const screeningRoutes = require("./routes/screening");
 
 app.use("/api/auth/", authRoutes);
 app.use("/api/movies/", movieRoutes);
+app.use("/api/screenings/", screeningRoutes);
 
 app.get("/", (req, res) => {
 	return res.status(200).send("Welcome to TBS-CTF 2022-23.");

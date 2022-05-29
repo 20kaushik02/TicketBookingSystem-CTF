@@ -32,7 +32,7 @@ const validateJWT = async (req, res, next) => {
 
 		const user = await Users.findOne({
 			where: {
-				id: tokenPayload.id,
+				username: tokenPayload.id,
 			}
 		});
 

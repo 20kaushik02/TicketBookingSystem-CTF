@@ -85,7 +85,7 @@ const getOffersAvailable = async (req, res) => {
 			],
 			where: {
 				referral: {
-					[Op.ne]: null,
+					[Op.ne]: '',
 				},
 			},
 		});
@@ -118,6 +118,7 @@ const getMovieDetails = async (req, res) => {
 			return res.status(404)
 				.send({ message: "Movie not found." });
 		}
+		
 		return res.status(200).send(movie);
 	} catch (error) {
 		console.error(error);
