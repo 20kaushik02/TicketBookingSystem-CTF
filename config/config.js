@@ -1,11 +1,11 @@
 require('dotenv').config();
 module.exports = {
     "development": {
-        "username": process.env.DEV_USERNAME, //your MySQL username
-        "password": process.env.DEV_PASSWORD, //your MySQL password
+        "username": process.env.DEV_USERNAME, // local postgres DB username
+        "password": process.env.DEV_PASSWORD, // local postgres DB password
         "database": "ctf",
         "host": "127.0.0.1",
-        "dialect": "postgres",
+        "dialect": "postgres", // DO NOT CHANGE: array data type is used
         "query":    {
             "raw": true,
         },
@@ -15,7 +15,7 @@ module.exports = {
         "password": null,
         "database": "database_test",
         "host": "127.0.0.1",
-        "dialect": "postgres",
+        "dialect": "postgres", // DO NOT CHANGE: array data type is used
         "query":    {
             "raw": true,
         },
@@ -25,7 +25,7 @@ module.exports = {
         "password": process.env.PROD_PASSWORD,
         "database": "ctf",
         "host": process.env.PROD_HOST,
-        "dialect": "postgres",
+        "dialect": "postgres", // DO NOT CHANGE: array data type is used
         "query":    {
             "raw": true,
         },

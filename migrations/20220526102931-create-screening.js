@@ -18,17 +18,24 @@ module.exports = {
             type: Sequelize.INTEGER
           },
           movieID: {
+            allowNull: false,
             type: Sequelize.INTEGER,
           },
           screen: {
+            allowNull: false,
             type: Sequelize.STRING
           },
           showtime: {
+            allowNull: false,
             type: Sequelize.DATE
           },
+          price: {
+            allowNull: false,
+            type: Sequelize.FLOAT
+          },
           seats: {
+            allowNull: false,
             type: Sequelize.ARRAY(Sequelize.BOOLEAN)
-
           },
           createdAt: {
             allowNull: false,

@@ -16,11 +16,20 @@ module.exports = (sequelize, DataTypes) => {
   Booking.init({
     username: {
       type: DataTypes.STRING,
+      allowNull: false,
     },
     screeningID: {
       type: DataTypes.INTEGER,
+      allowNull: false,
     },
-    seat: DataTypes.INTEGER
+    seat: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    redeemed: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+    },
   }, {
     sequelize,
     modelName: 'Booking',

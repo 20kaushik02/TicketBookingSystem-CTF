@@ -14,10 +14,26 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Screening.init({
-    movieID: DataTypes.INTEGER,
-    screen: DataTypes.STRING,
-    showtime: DataTypes.DATE,
-    seats: DataTypes.ARRAY(DataTypes.BOOLEAN),
+    movieID: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    screen: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    showtime: {
+      type: DataTypes.DATE,
+      allowNull: false
+    },
+    price: {
+      type: DataTypes.FLOAT,
+      allowNull: false
+    },
+    seats: {
+      type: DataTypes.ARRAY(DataTypes.BOOLEAN),
+      allowNull: false
+    },
   }, {
     sequelize,
     modelName: 'Screening',

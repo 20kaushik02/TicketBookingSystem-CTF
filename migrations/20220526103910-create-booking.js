@@ -18,13 +18,20 @@ module.exports = {
             type: Sequelize.INTEGER
           },
           username: {
+            allowNull: false,
             type: Sequelize.STRING,
           },
           screeningID: {
+            allowNull: false,
             type: Sequelize.INTEGER,
           },
           seat: {
+            allowNull: false,
             type: Sequelize.INTEGER
+          },
+          redeemed: {
+            allowNull: false,
+            type: Sequelize.BOOLEAN,
           },
           createdAt: {
             allowNull: false,

@@ -22,7 +22,8 @@ module.exports = {
             allowNull: false,
           },
           referral: {
-            type: Sequelize.STRING
+            type: Sequelize.STRING,
+            allowNull: false,
           },
           createdAt: {
             allowNull: false,
