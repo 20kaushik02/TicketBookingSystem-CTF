@@ -1,10 +1,7 @@
 const router = require('express').Router();
 
 const screeningValidator = require('../validators/screening');
-const tokenValidator = require('../validators/token');
 const validator = require("../validators");
-
-const JWTmiddleware = require("../middleware/tokenAuth");
 
 const screening = require("../controllers/screening");
 
@@ -16,11 +13,16 @@ router.get(
 );
 
 router.get(
-	"/seats",
-	tokenValidator.tokenAuthValidator,
-	screeningValidator.getScreeningSeats,
+	"/screening",
+	screeningValidator.getScreening,
 	validator.validate,
-	JWTmiddleware.validateJWT,
+	screening.getScreeningDetails,
+)
+
+router.get(
+	"/seats",
+	screeningValidator.getScreening,
+	validator.validate,
 	screening.getScreeningSeats,
 );
 

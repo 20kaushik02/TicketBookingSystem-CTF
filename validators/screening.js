@@ -26,7 +26,7 @@ const getMovieScreenings = async (req, res, next) =>	{
  * @param {typedefs.Res} res 
  * @param {typedefs.Next} next 
  */
-const getScreeningSeats = async (req, res, next) =>	{
+const getScreening = async (req, res, next) =>	{
 	await query("screeningID")
 		.notEmpty()
 		.withMessage("screeningID not defined")
@@ -40,5 +40,5 @@ const getScreeningSeats = async (req, res, next) =>	{
 
 module.exports = {
 	getMovieScreenings,
-	getScreeningSeats,
+	getScreening,
 }

@@ -17,7 +17,7 @@ const getMovieScreenings = async (req, res) => {
 
 		const screenings = await Screenings.findAll({
 			attributes:	[
-				"movieID", "screen", "showtime",  "price",
+				"id", "movieID", "screen", "showtime",  "price",
 			],
 			where:	{
 				movieID,
@@ -41,14 +41,45 @@ const getMovieScreenings = async (req, res) => {
  * @param {typedefs.Req} req
  * @param {typedefs.Res} res
  */
+ const getScreeningDetails = async (req, res) => {
+	try {
+		const { screeningID } = req.query;
+
+		const screening = await Screenings.findOne({
+			attributes:	[
+				"id", "movieID", "screen", "showtime", "price",
+			],
+			where:	{
+				id: screeningID,
+			}
+		});
+
+		if(!screening)	{
+			return res.status(404)
+				.send({ message: "Screening not found." });
+		}
+
+		return res.status(200).send(screening);
+	} catch (error) {
+		console.error(error);
+		return res.status(500).send({ message: "Server Error. Try again." });
+	}
+}
+
+/**
+ * @param {typedefs.Req} req
+ * @param {typedefs.Res} res
+ */
 const getScreeningSeats = async (req, res) => {
 	try {
+		const { screeningID } = req.query;
+
 		const seats = await Screenings.findOne({
 			attributes:	[
 				"seats"
 			],
 			where:	{
-				id:	req.query.screeningID,
+				id:	screeningID,
 			},
 		});
 
@@ -66,5 +97,6 @@ const getScreeningSeats = async (req, res) => {
 
 module.exports = {
 	getMovieScreenings,
+	getScreeningDetails,
 	getScreeningSeats,
 };
