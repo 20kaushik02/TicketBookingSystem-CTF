@@ -1,4 +1,4 @@
-const { body } = require("express-validator");
+const { body, header, param, query } = require("express-validator");
 
 const typedefs = require("../typedefs");
 

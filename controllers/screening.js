@@ -21,9 +21,6 @@ const getMovieScreenings = async (req, res) => {
 			],
 			where:	{
 				movieID,
-				showtime: {
-					[Op.gte]: cur_date,
-				},
 			},
 			order:	[
 				["showtime", "asc"]

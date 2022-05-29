@@ -7,15 +7,16 @@ const typedefs = require("../typedefs");
  * @param {typedefs.Res} res 
  * @param {typedefs.Next} next 
  */
-const tokenAuthValidator = async (req, res, next) => {
-	await header("authorization")
+const __validator_func = async (req, res, next) => {
+	await body('field_name')
 		.notEmpty()
-		.withMessage("authorization not defined")
+		.withMessage('field_name not defined in body')
 		.run(req);
 
 	next();
 }
 
 module.exports = {
-	tokenAuthValidator,
+	__validator_func,
 }
+
