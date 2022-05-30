@@ -9,7 +9,7 @@ const pos_int_regex = /^[1-9][0-9]*$/
  * @param {typedefs.Res} res 
  * @param {typedefs.Next} next 
  */
- const bookTicketValidator = async (req, res, next) => {
+const bookTicketValidator = async (req, res, next) => {
 	await body("screeningID")
 		.notEmpty()
 		.withMessage("screeningID not defined")
@@ -29,6 +29,29 @@ const pos_int_regex = /^[1-9][0-9]*$/
 	next();
 }
 
+/**
+ * @param {typedefs.Req} req 
+ * @param {typedefs.Res} res 
+ * @param {typedefs.Next} next 
+ */
+const redeemReferralValidator = async (req, res, next) => {
+	await body('bookingID')
+		.notEmpty()
+		.withMessage("bookingID not defined")
+		.matches(pos_int_regex)
+		.withMessage("bookingID should be a positive integer")
+		.toInt()
+		.run(req);
+
+	await body('referral_code')
+		.notEmpty()
+		.withMessage('referral_code not defined')
+		.run(req);
+
+	next();
+}
+
 module.exports = {
 	bookTicketValidator,
+	redeemReferralValidator,
 }

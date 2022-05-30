@@ -25,4 +25,13 @@ router.post(
 	booking.bookTicket,
 );
 
+router.put(
+	"/redeem",
+	tokenValidator.tokenAuthValidator,
+	bookingValidator.redeemReferralValidator,
+	validator.validate,
+	JWTmiddleware.validateJWT,
+	booking.redeemReferral,
+);
+
 module.exports = router;
