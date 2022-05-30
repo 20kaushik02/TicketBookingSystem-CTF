@@ -6,6 +6,7 @@
   "scripts": {
     "windev": "SET NODE_ENV=development& nodemon index.js",
     "nixdev": "NODE_ENV=development nodemon index.js",
+    "herokudbsetup": "npx sequelize-cli db:migrate:undo:all; npx sequelize-cli db:migrate; npx sequelize-cli db:seed:all",
     "herokuprod": "node index.js"
   },
   "repository": {
