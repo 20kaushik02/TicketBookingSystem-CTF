@@ -5,9 +5,8 @@
   "main": "index.js",
   "scripts": {
     "windev": "SET NODE_ENV=development& nodemon index.js",
-    "winprod": "SET NODE_ENV=production& node index.js",
     "nixdev": "NODE_ENV=development nodemon index.js",
-    "nixprod": "NODE_ENV=production node index.js"
+    "herokuprod": "node index.js"
   },
   "repository": {
     "type": "git",
